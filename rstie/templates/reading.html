@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Poems</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script>
+            function selectPoem()
+            {
+                var current = document.getElementById('selector').value
+                location.href = "/read/?id=" + current
+            }
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-light">
+          <form class="form-inline" method="POST">
+            <a href="/" class="btn btn-outline-danger">Назад</a>
+          </form>
+        </nav>
+        <select class="custom-select custom-select-sm" id="selector" onchange="selectPoem()">
+            {% for c in poems %}
+                <option value="{{c.id}}" {% if poem.id == c.id%}selected{%endif%}>{{c.name}}</option>
+            {% endfor %}
+        </select>
+    <h1>{{ poem.name }}</h1>
+        {% for p in paragraphs %}
+            <p>{{ p.text }} ({{ p.user.username }})</p>
+        {% endfor %}
+    </body>
+</html>

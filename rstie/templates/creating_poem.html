@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Poems</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<h1>Поэмы</h1>
+
+{% for i in abzats1 %}
+{{i.text}}
+{% endfor %}
+<form method="POST">
+    {% csrf_token %}
+    <a href="/" class="btn btn-outline-danger">Назад</a>
+    <div class="container">
+        <label for="formGroupExampleInput2"></label>
+        <input name="create1" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Название поэмы">
+    </div>
+    <div class="container">
+        <label for="exampleFormControlTextarea1"></label>
+        <textarea class="form-control" name="create" id="exampleFormControlTextarea1" placeholder="Ваш текст" rows="3"></textarea>
+        <input name="button2" type="submit" class="btn btn-outline-info" value="Начать поэму"/>
+    </div>
+</form>
+</body>
+</html>
